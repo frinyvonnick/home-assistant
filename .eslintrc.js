@@ -8,15 +8,17 @@ module.exports = {
     browser: true,
     node: true
   },
-  extends: 'airbnb-base',
+  extends: [
+    'airbnb-base',
+    'plugin:vue/recommended',
+    'plugin:prettier/recommended'
+  ],
   globals: {
     __static: true
   },
-  plugins: [
-    'html'
-  ],
-  'rules': {
-    'semi': 0,
+  plugins: ['html'],
+  rules: {
+    semi: 0,
     'global-require': 0,
     'import/no-unresolved': 0,
     'no-param-reassign': 0,
@@ -27,4 +29,4 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
-}
+};
