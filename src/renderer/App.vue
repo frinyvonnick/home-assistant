@@ -8,7 +8,7 @@
 import LandingPage from '@/components/LandingPage';
 
 export default {
-  name: 'home-assistant',
+  name: 'HomeAssistant',
   components: {
     LandingPage
   }

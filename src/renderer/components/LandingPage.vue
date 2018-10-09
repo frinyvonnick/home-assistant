@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'landing-page',
+  name: 'LandingPage',
   methods: {
     open(link) {
       this.$electron.shell.openExternal(link);
