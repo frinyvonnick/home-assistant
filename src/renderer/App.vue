@@ -12,8 +12,7 @@
     components: {
       LandingPage,
     },
-  }
-</script>
+  }</script>
 
 <style>
   /* CSS */
