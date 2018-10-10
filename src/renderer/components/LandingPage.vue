@@ -1,7 +1,8 @@
 <template>
   <div id="wrapper">
     <main>
-      <h1>Hello world!</h1>
+      <h1>Hello world!</h1>  
+      <img style="width: 100px;" src="../assets/day.svg" />
     </main>
   </div>
 </template>
