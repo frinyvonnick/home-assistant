@@ -1,14 +1,22 @@
 <template>
   <div id="wrapper">
     <main>
-      <h1>Météo</h1>
+      <h1>{{city}}</h1>
       <article>
         <section>
-          <h2>Aujourd'hui {{today.temperature }}°</h2>
+          <h2>{{today.date}}</h2>
+          <p class="temperatures">
+            {{today.temperatureMin}}°<br />
+            {{today.temperatureMax}}°
+          </p>
           <img style="width: 100px;" :src="today.icon" />
         </section>
         <section>
-          <h2>Demain {{ tomorrow.temperature }}°</h2>
+          <h2>{{tomorrow.date}}</h2>
+          <p class="temperatures">
+            {{tomorrow.temperatureMin}}°<br />
+            {{tomorrow.temperatureMax}}°
+          </p>
           <img style="width: 100px;" :src="tomorrow.icon" />
         </section>
       </article>
@@ -17,7 +25,8 @@
 </template>
 
 <script>
-import { isToday, isTomorrow } from 'date-fns'
+import { isToday, isTomorrow, format, addDays } from 'date-fns'
+import frLocale from 'date-fns/locale/fr'
 import { countBy, flatten, transform } from 'lodash'
 import path from 'path'
 
@@ -54,18 +63,32 @@ const getMaxTemperature = (data, fn) => {
     .map(item => Number(item.main.temp_max))))
 }
 
+// eslint-disable-next-line
+const getMinTemperature = (data, fn) => {
+  return Math.min(...flatten(data.filter(item => fn(new Date(item.dt_txt)))
+    .map(item => Number(item.main.temp_min))))
+}
+
 export default {
   name: 'landing-page',
-  data: () => ({ today: { icon: '' }, tomorrow: { icon: '' } }),
+  data: () => ({ today: { icon: '' }, tomorrow: { icon: '' }, city: '' }),
   async mounted() {
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?id=6434507&units=metric&appid=${process.env.WEATHER_API_KEY}`, { method: 'GET' })
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${process.env.CITY_CODE}&units=metric&appid=${process.env.WEATHER_API_KEY}`, { method: 'GET' })
     const data = await res.json()
+    console.log(data)
+
+    this.city = data.city.name
+    const today = new Date()
 
     this.today.icon = path.join(__dirname, '..', `assets/${mapIcon(getWeatherFor(data.list, isToday))}.svg`)
-    this.today.temperature = getMaxTemperature(data.list, isToday)
+    this.today.temperatureMax = getMaxTemperature(data.list, isToday)
+    this.today.temperatureMin = getMinTemperature(data.list, isToday)
+    this.today.date = format(today, 'dddd D', { locale: frLocale })
 
     this.tomorrow.icon = path.join(__dirname, '..', `assets/${mapIcon(getWeatherFor(data.list, isTomorrow))}.svg`)
-    this.tomorrow.temperature = getMaxTemperature(data.list, isTomorrow)
+    this.tomorrow.temperatureMax = getMaxTemperature(data.list, isTomorrow)
+    this.tomorrow.temperatureMin = getMinTemperature(data.list, isTomorrow)
+    this.tomorrow.date = format(addDays(today, 1), 'dddd D', { locale: frLocale })
   },
   methods: {
   },
@@ -84,8 +107,15 @@ export default {
     background-color: black;
   }
 
-  h1, h2 {
+  * {
     color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 500;
   }
 
   article {
@@ -95,5 +125,10 @@ export default {
 
   article section {
     flex: 1;
+    text-align: center;
+  }
+
+  article section h2 {
+    text-transform: capitalize;
   }
 </style>
