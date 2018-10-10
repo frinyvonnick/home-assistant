@@ -5,13 +5,16 @@ import { app, BrowserWindow } from 'electron' // eslint-disable-line
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
  */
 if (process.env.NODE_ENV !== 'development') {
-  global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\') // eslint-disable-line
+  global.__static = require('path') // eslint-disable-line
+    .join(__dirname, '/static')
+    .replace(/\\/g, '\\\\') // eslint-disable-line
 }
 
 let mainWindow
-const winURL = process.env.NODE_ENV === 'development'
-  ? 'http://localhost:9080'
-  : `file://${__dirname}/index.html`
+const winURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:9080'
+    : `file://${__dirname}/index.html`
 
 function createWindow() {
   /**
@@ -20,7 +23,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     height: 320,
     useContentSize: true,
-    width: 480,
+    width: 480
   })
 
   mainWindow.loadURL(winURL)
