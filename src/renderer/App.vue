@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import LandingPage from '@/components/LandingPage';
+import LandingPage from '@/components/LandingPage'
 
 export default {
   name: 'HomeAssistant',
   components: {
     LandingPage
   }
-};
+}
 </script>
 
 <style>

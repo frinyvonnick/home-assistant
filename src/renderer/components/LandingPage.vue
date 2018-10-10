@@ -11,10 +11,10 @@ export default {
   name: 'LandingPage',
   methods: {
     open(link) {
-      this.$electron.shell.openExternal(link);
+      this.$electron.shell.openExternal(link)
     }
   }
-};
+}
 </script>
 
 <style>
