@@ -3,22 +3,8 @@
     <main>
       <h1>{{city}}</h1>
       <article>
-        <section>
-          <h2>{{today.date}}</h2>
-          <p class="temperatures">
-            {{today.temperatureMin}}°<br />
-            {{today.temperatureMax}}°
-          </p>
-          <img style="width: 100px;" :src="today.icon" />
-        </section>
-        <section>
-          <h2>{{tomorrow.date}}</h2>
-          <p class="temperatures">
-            {{tomorrow.temperatureMin}}°<br />
-            {{tomorrow.temperatureMax}}°
-          </p>
-          <img style="width: 100px;" :src="tomorrow.icon" />
-        </section>
+        <DayWeather :day="today" />
+        <DayWeather :day="tomorrow" />
       </article>
     </main>
   </div>
@@ -26,9 +12,13 @@
 
 <script>
 import { loadWeather } from '../services/meteo'
+import DayWeather from './DayWeather'
 
 export default {
   name: 'landing-page',
+  components: {
+    DayWeather,
+  },
   data: () => ({
     city: '',
     today: { icon: '' },
@@ -66,6 +56,10 @@ h5,
 h6 {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 500;
+}
+
+h1 {
+  text-align: center;
 }
 
 article {
