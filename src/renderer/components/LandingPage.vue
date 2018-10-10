@@ -8,29 +8,29 @@
 </template>
 
 <script>
-  export default {
-    name: 'landing-page',
-    methods: {
-      open(link) {
-        this.$electron.shell.openExternal(link)
-      },
-    },
+export default {
+  name: 'LandingPage',
+  methods: {
+    open(link) {
+      this.$electron.shell.openExternal(link)
+    }
   }
+}
 </script>
 
 <style>
-  body {
-    margin: 0;
-  }
+body {
+  margin: 0;
+}
 
-  main {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-color: black;
-  }
+main {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+}
 
-  h1 {
-    color: white;
-  }
+h1 {
+  color: white;
+}
 </style>
