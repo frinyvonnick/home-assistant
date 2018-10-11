@@ -33,15 +33,13 @@ export async function loadWeather() {
 }
 
 function parse(date, data) {
+  const { format: formatNumber } = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 })
+
   return {
-    icon: path.join(
-      __dirname,
-      '..',
-      `assets/${mapIcon(getWeatherFor(data.list, isToday))}.svg`
-    ),
-    temperatureMax: getMaxTemperature(data.list, isToday),
-    temperatureMin: getMinTemperature(data.list, isToday),
-    date: format(date, 'dddd D', { locale: frLocale })
+    icon: path.join(__dirname, '..', `assets/${mapIcon(getWeatherFor(data.list, isToday))}.svg`),
+    temperatureMax: formatNumber(getMaxTemperature(data.list, isToday)),
+    temperatureMin: formatNumber(getMinTemperature(data.list, isToday)),
+    date: format(date, 'dddd D/M', { locale: frLocale }),
   }
 }
 

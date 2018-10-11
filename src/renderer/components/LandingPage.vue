@@ -46,6 +46,7 @@ main {
   color: white;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  box-sizing: border-box;
 }
 
 h1,
@@ -60,19 +61,11 @@ h6 {
 
 h1 {
   text-align: center;
+  margin: 10px 0;
 }
 
 article {
   display: flex;
   flex-direction: row;
-}
-
-article section {
-  flex: 1;
-  text-align: center;
-}
-
-article section h2 {
-  text-transform: capitalize;
 }
 </style>
