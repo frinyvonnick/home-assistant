@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <main>
-      <h1>{{city}}</h1>
+      <h1>{{city}} <Clock :displaySeconds="true" /></h1>
       <article>
         <DayWeather :day="today" />
         <DayWeather :day="tomorrow" />
@@ -11,13 +11,16 @@
 </template>
 
 <script>
+import Clock from 'vue-digital-clock'
+
 import { loadWeather } from '../services/meteo'
 import DayWeather from './DayWeather'
 
 export default {
   name: 'landing-page',
   components: {
-    DayWeather
+    DayWeather,
+    Clock,
   },
   data: () => ({
     city: '',
@@ -60,8 +63,15 @@ h6 {
 }
 
 h1 {
-  text-align: center;
-  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid white;
+  margin: 10px 20px 0;
+}
+
+time {
+  font-size: 18px;
 }
 
 article {

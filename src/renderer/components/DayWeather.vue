@@ -3,8 +3,8 @@
     <h2>{{day.date}}</h2>
     <img style="width: 100px;" :src="day.icon" />
     <p class="temperatures">
-      {{day.temperatureMin}} °C<br />
-      {{day.temperatureMax}} °C
+      {{day.temperatureMax}} °C<br />
+      <span class="min">{{day.temperatureMin}} °C</span>
     </p>
   </section>
 </template>
@@ -24,5 +24,17 @@ section {
 
 section h2 {
   text-transform: capitalize;
+}
+
+section p {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5em;
+  font-weight: 400;
+}
+
+section .min {
+  font-size: 18px;
+  font-weight: 300;
 }
 </style>

@@ -7263,6 +7263,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-digital-clock@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/vue-digital-clock/-/vue-digital-clock-1.5.0.tgz#3d5e833d82a1ea600a02d134906477d5b309628b"
+
 vue-electron@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/vue-electron/-/vue-electron-1.0.6.tgz#e798e03180b8933539defe31f92e53b9242b9406"
