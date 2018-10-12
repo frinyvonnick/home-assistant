@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "FRIN Yvonnick <frin.yvonnick@gmail.com>",
   "description": "Home assistant for raspberry-pi with touchscreen",
-  "license": null,
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -53,7 +53,10 @@
     }
   },
   "dependencies": {
+    "date-fns": "^1.29.0",
+    "dotenv": "^6.0.0",
     "eslint-plugin-vue": "^4.7.1",
+    "lodash": "^4.17.11",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6"
   },
@@ -84,9 +87,9 @@
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-import-resolver-webpack": "^0.10.0",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-html": "^4.0.6",
+    "eslint-plugin-html": "^4.0.3",
     "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-prettier": "^3.0.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "0.4.0",

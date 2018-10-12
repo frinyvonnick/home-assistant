@@ -1,19 +1,31 @@
 <template>
   <div id="wrapper">
     <main>
-      <h1>Hello world!</h1>  
-      <img style="width: 100px;" src="../assets/day.svg" />
+      <h1>{{city}}</h1>
+      <article>
+        <DayWeather :day="today" />
+        <DayWeather :day="tomorrow" />
+      </article>
     </main>
   </div>
 </template>
 
 <script>
+import { loadWeather } from '../services/meteo'
+import DayWeather from './DayWeather'
+
 export default {
-  name: 'LandingPage',
-  methods: {
-    open(link) {
-      this.$electron.shell.openExternal(link)
-    }
+  name: 'landing-page',
+  components: {
+    DayWeather
+  },
+  data: () => ({
+    city: '',
+    today: { icon: '' },
+    tomorrow: { icon: '' }
+  }),
+  async mounted() {
+    Object.assign(this.$data, await loadWeather())
   }
 }
 </script>
@@ -30,7 +42,37 @@ main {
   background-color: black;
 }
 
-h1 {
+* {
   color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 500;
+}
+
+h1 {
+  text-align: center;
+}
+
+article {
+  display: flex;
+  flex-direction: row;
+}
+
+article section {
+  flex: 1;
+  text-align: center;
+}
+
+article section h2 {
+  text-transform: capitalize;
 }
 </style>

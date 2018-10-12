@@ -1,6 +1,11 @@
 'use strict'
 
 process.env.BABEL_ENV = 'main'
+const parsed = require('dotenv').config().parsed
+for (let envVar in parsed) {
+  process.env[envVar] = parsed[envVar]
+}
+console.log('WEATHER_API_KEY', process.env.WEATHER_API_KEY)
 
 const path = require('path')
 const { dependencies } = require('../package.json')
@@ -22,6 +27,7 @@ let mainConfig = {
         use: {
           loader: 'eslint-loader',
           options: {
+            emitWarning: true,
             formatter: require('eslint-friendly-formatter')
           }
         }
