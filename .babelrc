@@ -33,7 +33,18 @@
         ],
         "stage-0"
       ]
-    }
+    },
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": { "node": 7 }
+          }
+        ],
+        "stage-0"
+      ]
+    },
   },
   "plugins": ["transform-runtime"]
 }

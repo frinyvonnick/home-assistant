@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    jest: true,
+    node: true,
   },
   globals: {
     __static: true
