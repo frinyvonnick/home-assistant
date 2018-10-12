@@ -17,17 +17,17 @@ import DayWeather from './DayWeather'
 export default {
   name: 'landing-page',
   components: {
-    DayWeather,
+    DayWeather
   },
   data: () => ({
     city: '',
     today: { icon: '' },
-    tomorrow: { icon: '' },
+    tomorrow: { icon: '' }
   }),
   async mounted() {
     Object.assign(this.$data, await loadWeather())
-  },
-};
+  }
+}
 </script>
 
 <style>
@@ -44,7 +44,7 @@ main {
 
 * {
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
 
@@ -54,7 +54,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-weight: 500;
 }
 

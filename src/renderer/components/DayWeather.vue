@@ -12,6 +12,6 @@
 <script>
 export default {
   name: 'day-weather',
-  props: ['day'],
+  props: ['day']
 }
 </script>
