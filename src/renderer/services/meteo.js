@@ -65,7 +65,7 @@ function getMinTemperature(data, fn) {
   )
 }
 
-function getWeatherFor(data, fn) {
+export function getWeatherFor(data, fn) {
   return transform(
     countBy(
       flatten(
