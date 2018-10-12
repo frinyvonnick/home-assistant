@@ -1,4 +1,3 @@
-import { isToday } from 'date-fns'
 import { getWeatherFor } from './meteo'
 
 const data = [
