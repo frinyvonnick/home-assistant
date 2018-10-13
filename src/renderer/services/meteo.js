@@ -32,15 +32,15 @@ export async function loadWeather() {
   }
 }
 
-function parse(date, data, checkDayFunc) {
+function parse(date, data, checkDayFn) {
   return {
     icon: path.join(
       __dirname,
       '..',
-      `assets/${mapIcon(getWeatherFor(data.list, checkDayFunc))}.svg`
+      `assets/${mapIcon(getWeatherFor(data.list, checkDayFn))}.svg`
     ),
-    temperatureMax: getMaxTemperature(data.list, checkDayFunc),
-    temperatureMin: getMinTemperature(data.list, checkDayFunc),
+    temperatureMax: getMaxTemperature(data.list, checkDayFn),
+    temperatureMin: getMinTemperature(data.list, checkDayFn),
     date: format(date, 'dddd D', { locale: frLocale })
   }
 }
