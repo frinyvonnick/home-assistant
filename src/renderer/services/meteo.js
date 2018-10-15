@@ -1,4 +1,4 @@
-import { isToday, format, addDays } from 'date-fns'
+import { isToday, isTomorrow, format, addDays } from 'date-fns'
 import frLocale from 'date-fns/locale/fr'
 import { countBy, flatten, transform } from 'lodash'
 import path from 'path'
@@ -27,20 +27,20 @@ export async function loadWeather() {
 
   return {
     city: data.city.name,
-    today: parse(today, data),
-    tomorrow: parse(addDays(today, 1), data)
+    today: parse(today, data, isToday),
+    tomorrow: parse(addDays(today, 1), data, isTomorrow)
   }
 }
 
-function parse(date, data) {
+function parse(date, data, checkDayFn) {
   return {
     icon: path.join(
       __dirname,
       '..',
-      `assets/${mapIcon(getWeatherFor(data.list, isToday))}.svg`
+      `assets/${mapIcon(getWeatherFor(data.list, checkDayFn))}.svg`
     ),
-    temperatureMax: getMaxTemperature(data.list, isToday),
-    temperatureMin: getMinTemperature(data.list, isToday),
+    temperatureMax: getMaxTemperature(data.list, checkDayFn),
+    temperatureMin: getMinTemperature(data.list, checkDayFn),
     date: format(date, 'dddd D', { locale: frLocale })
   }
 }
