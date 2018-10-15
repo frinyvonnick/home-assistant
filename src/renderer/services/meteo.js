@@ -1,20 +1,21 @@
 import { isToday, isTomorrow, format, addDays } from 'date-fns'
+import { day, thunder, rainy, cloudy, snowy } from '@/services/meteo-icons'
+
 import frLocale from 'date-fns/locale/fr'
 import { countBy, flatten, transform } from 'lodash'
-import path from 'path'
 
 const { CITY_CODE, WEATHER_API_KEY } = process.env
 
 const mapIcon = key =>
   ({
-    8: 'day',
-    2: 'thunder',
-    3: 'rainy',
-    5: 'rainy',
-    6: 'snowy',
-    7: 'cloudy',
-    9: 'cloudy'
-  }[key] || 'day')
+    8: day,
+    2: thunder,
+    3: rainy,
+    5: rainy,
+    6: snowy,
+    7: cloudy,
+    9: cloudy
+  }[key] || day)
 
 export async function loadWeather() {
   const response = await fetch(
@@ -34,11 +35,7 @@ export async function loadWeather() {
 
 function parse(date, data, checkDayFn) {
   return {
-    icon: path.join(
-      __dirname,
-      '..',
-      `assets/${mapIcon(getWeatherFor(data.list, checkDayFn))}.svg`
-    ),
+    icon: mapIcon(getWeatherFor(data.list, checkDayFn)),
     temperatureMax: getMaxTemperature(data.list, checkDayFn),
     temperatureMin: getMinTemperature(data.list, checkDayFn),
     date: format(date, 'dddd D', { locale: frLocale })
