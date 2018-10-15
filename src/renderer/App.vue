@@ -1,6 +1,6 @@
 <template>
   <main id="app">
-    <Carousel :perPage="1">
+    <Carousel :perPage="1" :paginationEnabled="false">
       <Slide>
         <LandingPage />
       </Slide>
@@ -51,10 +51,5 @@ h5,
 h6 {
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 500;
-}
-
-.VueCarousel-pagination {
-  display: none;
-  overflow: hidden;
 }
 </style>
