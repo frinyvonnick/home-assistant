@@ -1,5 +1,6 @@
-import { isToday, format, addDays } from 'date-fns'
+import { isToday, isTomorrow, format, addDays } from 'date-fns'
 import { day, thunder, rainy, cloudy, snowy } from '@/services/meteo-icons'
+
 import frLocale from 'date-fns/locale/fr'
 import { countBy, flatten, transform } from 'lodash'
 
@@ -27,12 +28,12 @@ export async function loadWeather() {
 
   return {
     city: data.city.name,
-    today: parse(today, data),
-    tomorrow: parse(addDays(today, 1), data)
+    today: parse(today, data, isToday),
+    tomorrow: parse(addDays(today, 1), data, isTomorrow)
   }
 }
 
-function parse(date, data) {
+function parse(date, data, checkDayFn) {
   return {
     icon: mapIcon(getWeatherFor(data.list, isToday)),
     temperatureMax: getMaxTemperature(data.list, isToday),
