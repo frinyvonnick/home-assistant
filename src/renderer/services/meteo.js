@@ -35,9 +35,9 @@ export async function loadWeather() {
 
 function parse(date, data, checkDayFn) {
   return {
-    icon: mapIcon(getWeatherFor(data.list, isToday)),
-    temperatureMax: getMaxTemperature(data.list, isToday),
-    temperatureMin: getMinTemperature(data.list, isToday),
+    icon: mapIcon(getWeatherFor(data.list, checkDayFn)),
+    temperatureMax: getMaxTemperature(data.list, checkDayFn),
+    temperatureMin: getMinTemperature(data.list, checkDayFn),
     date: format(date, 'dddd D', { locale: frLocale })
   }
 }
