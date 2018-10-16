@@ -21,6 +21,10 @@ yarn run build
 yarn run lint
 ```
 
+#### Hardware requirements
+
+Here you can find a [list of hardwares needed](http://amzn.eu/4sU9x1x) to run the project.
+
 #### Environment variables
 
 Required env variables :
