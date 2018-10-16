@@ -5,7 +5,7 @@
         <Weather />
       </Slide>
       <Slide>
-        <div>Hello Tasks !!</div>
+        <Tasks />
       </Slide>
     </Carousel>
   </main>
@@ -14,13 +14,15 @@
 <script>
 import { Carousel, Slide } from 'vue-carousel'
 import Weather from '@/components/Weather/Weather'
+import Tasks from '@/components/Task/Tasks'
 
 export default {
   name: 'HomeAssistant',
   components: {
     Carousel,
-    Weather,
-    Slide
+    Slide,
+    Tasks,
+    Weather
   }
 }
 </script>
