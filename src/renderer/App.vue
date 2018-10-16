@@ -2,7 +2,7 @@
   <main id="app">
     <Carousel :perPage="1" :paginationEnabled="false">
       <Slide>
-        <LandingPage />
+        <Weather />
       </Slide>
       <Slide>
         <div>Hello Tasks !!</div>
@@ -13,13 +13,13 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel'
-import LandingPage from '@/components/LandingPage'
+import Weather from '@/components/Weather/Weather'
 
 export default {
   name: 'HomeAssistant',
   components: {
     Carousel,
-    LandingPage,
+    Weather,
     Slide
   }
 }
