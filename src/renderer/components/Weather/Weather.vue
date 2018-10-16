@@ -10,7 +10,7 @@
 
 <script>
 import Clock from 'vue-digital-clock'
-import { loadWeather } from '../../services/meteo'
+import { loadWeather } from '@/services/meteo'
 import DayWeather from './DayWeather'
 
 export default {
