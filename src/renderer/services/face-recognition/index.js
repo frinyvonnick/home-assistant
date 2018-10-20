@@ -12,6 +12,7 @@ import {
   createHomeAssistantTmpFolders,
   copySharedAssetsToHomeAssistantTmpFolders
 } from './share-assets-with-opencv'
+import { initClassifier } from './classifier'
 import { configureRecognizer, recognizer } from './recognizer'
 import { getResizedGrayFaceFromImgAsync } from './extract-face-from-img'
 
@@ -90,6 +91,9 @@ const init = persons => {
   // Allow to share files (classifier + trainer images) with openCV
   createHomeAssistantTmpFolders()
   copySharedAssetsToHomeAssistantTmpFolders()
+
+  // Load classifier
+  initClassifier()
 
   // Configure trainers for face recognition
   configureRecognizer(personsData)

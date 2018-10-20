@@ -1,4 +1,4 @@
-import classifier from './classifier'
+import { getClassifier } from './classifier'
 import { ERROR_MUTLI_SCALE_DETECTION } from './constants'
 
 /**
@@ -19,6 +19,7 @@ const getGrayFaceImgFromRects = (grayImg, faceRects) => {
  */
 const getResizedGrayFaceFromImgAsync = async img => {
   const grayImg = img.bgrToGray()
+  const classifier = getClassifier()
   const multiScale = await classifier.detectMultiScaleAsync(grayImg)
   const faceRects = multiScale.objects
   if (!faceRects.length) throw new Error(ERROR_MUTLI_SCALE_DETECTION)
@@ -33,6 +34,7 @@ const getResizedGrayFaceFromImgAsync = async img => {
  */
 const getResizedGrayFaceFromImgSync = img => {
   const grayImg = img.bgrToGray()
+  const classifier = getClassifier()
   const multiScale = classifier.detectMultiScale(grayImg)
   const faceRects = multiScale.objects
   if (!faceRects.length) throw new Error(ERROR_MUTLI_SCALE_DETECTION)
