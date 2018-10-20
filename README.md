@@ -2,6 +2,20 @@
 
 > Home assistant for raspberry-pi with touchscreen
 
+#### Hardware requirements
+
+Here you can find a [list of hardwares needed](http://amzn.eu/4sU9x1x) to run the project.
+
+To get your camera working on raspberry, you should execute the following command :
+
+```bash
+sudo modprobe bcm2835-v4l2
+```
+
+#### Software requirements
+
+You must have [cmake](https://cmake.org/) installed on your machine to correctly install dependencies (required by opencv).
+
 #### Build Setup
 
 The project use yarn instead of npm for everything :wink:
@@ -16,14 +30,9 @@ yarn run dev
 # build electron application for production
 yarn run build
 
-
 # lint all JS/Vue component files in `src/`
 yarn run lint
 ```
-
-#### Hardware requirements
-
-Here you can find a [list of hardwares needed](http://amzn.eu/4sU9x1x) to run the project.
 
 #### Environment variables
 
