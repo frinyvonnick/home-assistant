@@ -68,7 +68,6 @@
   "dependencies": {
     "date-fns": "^1.29.0",
     "dotenv": "^6.0.0",
-    "electron-rebuild": "^1.8.2",
     "eslint-plugin-vue": "^4.7.1",
     "lodash": "^4.17.11",
     "opencv4nodejs": "^4.9.0",
@@ -80,6 +79,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "electron-rebuild": "^1.8.2",
     "@vue/test-utils": "^1.0.0-beta.25",
     "ajv": "^6.5.0",
     "babel-core": "^6.26.3",
