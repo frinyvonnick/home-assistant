@@ -4,6 +4,6 @@ export default {
   cameraInterval: null,
   currentFrame: null,
   loadImagesSample: false,
-  imagesSampleSize: 10,
+  imagesSampleSize: 1,
   imagesSample: []
 }
