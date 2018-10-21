@@ -6,7 +6,9 @@
 
 Here you can find a [list of hardwares needed](http://amzn.eu/4sU9x1x) to run the project.
 
-To get your camera working on raspberry, you should execute the following command :
+Follow [these instructions](https://www.raspberrypi.org/documentation/configuration/camera.md) to enable camera on your raspberry 
+
+To get your camera working on raspberry with opencv, you should execute the following command :
 
 ```bash
 sudo modprobe bcm2835-v4l2
