@@ -16,8 +16,9 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": "npm run lint:fix",
-    "test": "jest"
+    "postinstall": "npm run lint:fix && npm run electron-rebuild",
+    "test": "jest",
+    "electron-rebuild": "electron-rebuild -v 2.0.4 -w opencv4nodejs"
   },
   "build": {
     "productName": "home-assistant",
@@ -69,12 +70,16 @@
     "dotenv": "^6.0.0",
     "eslint-plugin-vue": "^4.7.1",
     "lodash": "^4.17.11",
+    "opencv4nodejs": "^4.9.0",
+    "rimraf": "^2.6.2",
     "vue": "^2.5.16",
     "vue-carousel": "^0.14.0",
     "vue-digital-clock": "https://github.com/frinyvonnick/vue-digital-clock",
-    "vue-electron": "^1.0.6"
+    "vue-electron": "^1.0.6",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "electron-rebuild": "^1.8.2",
     "@vue/test-utils": "^1.0.0-beta.25",
     "ajv": "^6.5.0",
     "babel-core": "^6.26.3",
