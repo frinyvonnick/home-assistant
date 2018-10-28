@@ -8,12 +8,12 @@ describe('DayWeather', () => {
       propsData: {
         day: {
           date: new Date(),
-          temperatureMin: 14.5,
+          temperatureMin: '14,5',
           temperatureMax: 16
         }
       }
     })
 
-    expect(wrapper.text()).toContain('14.5°')
+    expect(wrapper.text()).toContain('14,5 C°')
   })
 })

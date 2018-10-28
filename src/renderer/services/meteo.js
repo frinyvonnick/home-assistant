@@ -2,7 +2,7 @@ import { isToday, isTomorrow, format, addDays } from 'date-fns'
 import { day, thunder, rainy, cloudy, snowy } from '@/services/meteo-icons'
 
 import frLocale from 'date-fns/locale/fr'
-import { countBy, flatten, transform } from 'lodash'
+import { flatten } from 'lodash'
 
 const { CITY_CODE, WEATHER_API_KEY } = process.env
 
@@ -33,11 +33,15 @@ export async function loadWeather() {
   }
 }
 
+const formatNumber = new Intl.NumberFormat('fr-FR', {
+  maximumSignificantDigits: 2
+}).format
+
 function parse(date, data, checkDayFn) {
   return {
     icon: mapIcon(getWeatherFor(data.list, checkDayFn)),
-    temperatureMax: getMaxTemperature(data.list, checkDayFn),
-    temperatureMin: getMinTemperature(data.list, checkDayFn),
+    temperatureMax: formatNumber(getMaxTemperature(data.list, checkDayFn)),
+    temperatureMin: formatNumber(getMinTemperature(data.list, checkDayFn)),
     date: format(date, 'dddd D', { locale: frLocale })
   }
 }
@@ -62,23 +66,25 @@ function getMinTemperature(data, fn) {
   )
 }
 
+const priority = {
+  6: 0, // Snow
+  5: 1, // Rain
+  3: 2, // Drizzle
+  2: 3, // Thunder
+  7: 4, // Atmosphere
+  9: 5, // Cloud
+  8: 6 // Clear
+}
+
 export function getWeatherFor(data, fn) {
-  return transform(
-    countBy(
-      flatten(
-        data.filter(item => fn(new Date(item.dt_txt))).map(item => item.weather)
-      ).map(item => {
-        const id = `${item.id}`.substr(0, 1)
-        if (id === 8 && item.id > 800) return 9
-        return id
-      })
-    ),
-    (result, value, key) => {
-      if (value > result.value) {
-        return { key, value }
-      }
-      return result
-    },
-    { key: 8, value: 0 }
-  ).key
+  const weather = flatten(
+    data.filter(item => fn(new Date(item.dt_txt))).map(item => item.weather)
+  )
+    .map(item => {
+      const id = `${item.id}`.substr(0, 1)
+      if (id === 8 && item.id > 800) return 9
+      return id
+    })
+    .sort((a, b) => priority[a] - priority[b])
+  return weather[0]
 }
