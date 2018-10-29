@@ -34,7 +34,9 @@ main {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: black;
+  /*background-color: black;*/
+  background-image: url('../renderer/assets/background.jpg');
+  background-size: contain;
 }
 
 * {

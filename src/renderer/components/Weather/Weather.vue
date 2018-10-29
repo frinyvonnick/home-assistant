@@ -1,9 +1,9 @@
 <template>
   <div id="wrapper">
-    <h1>{{city}} <Clock /></h1>
+    <!--<h1>{{city}} <Clock /></h1>-->
     <article>
-      <DayWeather :day="today" />
-      <DayWeather :day="tomorrow" />
+      <TodayWeather :day="today" :city="city" />
+      <TomorrowWeather :day="tomorrow" />
     </article>
   </div>
 </template>
@@ -11,12 +11,14 @@
 <script>
 import Clock from 'vue-digital-clock'
 import { loadWeather } from '@/services/meteo'
-import DayWeather from './DayWeather'
+import TodayWeather from './TodayWeather'
+import TomorrowWeather from './TomorrowWeather'
 
 export default {
   name: 'weather',
   components: {
-    DayWeather,
+    TodayWeather,
+    TomorrowWeather,
     Clock
   },
   data: () => ({
@@ -31,21 +33,8 @@ export default {
 </script>
 
 <style>
-h1 {
-  text-align: center;
-}
-
-article {
-  display: flex;
-  flex-direction: row;
-}
-
 article section {
   flex: 1;
   text-align: center;
-}
-
-article section h2 {
-  text-transform: capitalize;
 }
 </style>

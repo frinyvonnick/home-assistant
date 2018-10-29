@@ -1,10 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
 
-import DayWeather from './DayWeather.vue'
+import TodayWeather from './TodayWeather.vue'
 
-describe('DayWeather', () => {
+describe('TodayWeather', () => {
   it('should display formatted temperature', () => {
-    const wrapper = shallowMount(DayWeather, {
+    const wrapper = shallowMount(TodayWeather, {
       propsData: {
         day: {
           date: new Date(),
