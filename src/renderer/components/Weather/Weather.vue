@@ -1,10 +1,13 @@
 <template>
   <div id="wrapper">
-    <!--<h1>{{city}} <Clock /></h1>-->
-    <article>
+    <section>
+      <header>
+        <p>{{city}}</p>
+        <Clock />
+      </header>
       <TodayWeather :day="today" :city="city" />
       <TomorrowWeather :day="tomorrow" />
-    </article>
+    </section>
   </div>
 </template>
 
@@ -33,8 +36,42 @@ export default {
 </script>
 
 <style>
-article section {
-  flex: 1;
-  text-align: center;
+h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 1rem 0;
+}
+
+header > p {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul > li {
+  display: inline-flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+ul > li:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.clock {
+  font-size: 1.3rem;
 }
 </style>

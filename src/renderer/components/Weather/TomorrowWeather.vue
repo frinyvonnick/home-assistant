@@ -1,12 +1,12 @@
 <template>
-  <section class="tomorrow">
+  <article class="tomorrow">
     <p>{{day.date}}</p>
-    <img style="width: 75px;" :src="day.icon" />
-    <ul class="temperatures">
+    <img :src="day.icon" />
+    <ul>
       <li>{{day.temperatureMin}}°C</li>
       <li>{{day.temperatureMax}}°C</li>
     </ul>
-  </section>
+  </article>
 </template>
 
 <script>
@@ -24,22 +24,17 @@ export default {
 <style>
 .tomorrow {
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: space-evenly;
-  margin: 1rem;
+  justify-content: space-around;
+  margin-top: 1rem;
 }
 
-.temperatures {
-  list-style: none;
-  padding: 0;
+.tomorrow > img {
+  width: 50px;
 }
 
-.temperatures > li {
-  display: inline-flex;
-  font-weight: 400;
-}
-
-.temperatures > li:not(:last-child) {
-  margin-right: 1rem;
+.tomorrow > ul > li {
+  font-size: 1rem;
 }
 </style>
