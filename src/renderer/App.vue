@@ -41,7 +41,6 @@ main {
 * {
   color: white;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
 }
 
 h1,

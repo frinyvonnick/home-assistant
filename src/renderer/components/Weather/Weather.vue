@@ -38,20 +38,19 @@ export default {
 <style>
 h1 {
   font-size: 2rem;
-  font-weight: 300;
   margin: 0;
   text-transform: capitalize;
 }
 
 header {
   display: flex;
+  font-weight: 300;
   justify-content: space-between;
   margin: 1rem 1rem 0;
 }
 
 header > p {
   font-size: 1.3rem;
-  font-weight: 300;
   margin: 0;
 }
 
@@ -59,12 +58,17 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  font-weight: 400;
 }
 
 ul > li {
   display: inline-flex;
+  font-size: 1rem;
+}
+
+ul > li > em {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-style: normal;
 }
 
 ul > li:not(:last-child) {

@@ -4,7 +4,7 @@
     <img :src="day.icon" />
     <ul>
       <li>{{day.temperatureMin}}°C</li>
-      <li>{{day.temperatureMax}}°C</li>
+      <li><em>{{day.temperatureMax}}°C</em></li>
     </ul>
   </article>
 </template>
@@ -36,5 +36,9 @@ export default {
 
 .tomorrow > ul > li {
   font-size: 1rem;
+}
+
+.tomorrow > ul > li > em {
+  font-size: 1.2rem;
 }
 </style>
