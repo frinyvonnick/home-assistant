@@ -7,13 +7,13 @@ describe('TodayWeather', () => {
     const wrapper = shallowMount(TodayWeather, {
       propsData: {
         day: {
-          date: new Date(),
+          date: 'Mardi 6',
           temperatureMin: '14,5',
           temperatureMax: 16
         }
       }
     })
 
-    expect(wrapper.text()).toContain('14,5 C°')
+    expect(wrapper.text()).toContain('Mardi 6')
   })
 })
