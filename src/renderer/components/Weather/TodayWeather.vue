@@ -2,22 +2,17 @@
   <article class="today">
     <h1>{{day.date}}</h1>
     <img :src="day.icon" />
-    <ul>
-      <li>{{day.temperatureMin}}°C</li>
-      <li><em>{{day.temperatureMax}}°C</em></li>
-    </ul>
+    <Temperatures :day="day" />
   </article>
 </template>
 
 <script>
-import Clock from 'vue-digital-clock'
+import Temperatures from './Temperatures'
 
 export default {
   name: 'today-weather',
-  components: {
-    Clock
-  },
-  props: ['day', 'city']
+  components: { Temperatures },
+  props: ['day']
 }
 </script>
 

@@ -2,22 +2,16 @@
   <article class="tomorrow">
     <p>{{day.date}}</p>
     <img :src="day.icon" />
-    <ul>
-      <li>{{day.temperatureMin}}°C</li>
-      <li><em>{{day.temperatureMax}}°C</em></li>
-    </ul>
+    <Temperatures :day="day" isInline />
   </article>
 </template>
 
 <script>
-import Clock from 'vue-digital-clock'
-
+import Temperatures from './Temperatures'
 export default {
   name: 'tomorrow-weather',
-  components: {
-    Clock
-  },
-  props: ['day', 'city']
+  components: { Temperatures },
+  props: ['day']
 }
 </script>
 
@@ -32,13 +26,5 @@ export default {
 
 .tomorrow > img {
   width: 50px;
-}
-
-.tomorrow > ul > li {
-  font-size: 1rem;
-}
-
-.tomorrow > ul > li > em {
-  font-size: 1.2rem;
 }
 </style>

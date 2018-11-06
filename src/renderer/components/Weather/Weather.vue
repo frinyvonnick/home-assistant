@@ -54,27 +54,6 @@ header > p {
   margin: 0;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
-}
-
-ul > li {
-  display: inline-flex;
-  font-size: 1rem;
-}
-
-ul > li > em {
-  font-size: 1.5rem;
-  font-style: normal;
-}
-
-ul > li:not(:last-child) {
-  margin-right: 1rem;
-}
-
 .clock {
   font-size: 1.3rem;
 }
