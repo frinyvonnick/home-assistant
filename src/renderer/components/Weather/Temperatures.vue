@@ -1,5 +1,5 @@
 <template>
-  <ul v-bind:class="{ isInline }">
+  <ul v-bind:class="{ inline }">
     <li>{{day.temperatureMin}}°C</li>
     <li><em>{{day.temperatureMax}}°C</em></li>
   </ul>
@@ -10,7 +10,7 @@ export default {
   name: 'temperatures',
   props: {
     day: Object,
-    isInline: {
+    inline: {
       type: Boolean,
       default: false
     }
@@ -40,11 +40,11 @@ ul > li:not(:last-child) {
   margin-right: 1rem;
 }
 
-ul.isInline > li {
+ul.inline > li {
   font-size: 1rem;
 }
 
-ul.isInline > li > em {
+ul.inline > li > em {
   font-size: 1.2rem;
 }
 </style>

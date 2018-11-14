@@ -2,7 +2,7 @@
   <article class="tomorrow">
     <p>{{day.date}}</p>
     <img :src="day.icon" />
-    <Temperatures :day="day" isInline />
+    <Temperatures :day="day" inline />
   </article>
 </template>
 
