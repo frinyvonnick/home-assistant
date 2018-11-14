@@ -1,5 +1,6 @@
 <template>
-  <main id="app">
+  <main id="app"
+        :style="{'background-image': `url(${require('@/assets/background.jpg')})`}">
     <Carousel :perPage="1" :paginationEnabled="false">
       <Slide>
         <Weather />
@@ -34,13 +35,12 @@ main {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: black;
+  background-size: cover;
 }
 
 * {
   color: white;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
 }
 
 h1,

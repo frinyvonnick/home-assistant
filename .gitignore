@@ -12,3 +12,4 @@ thumbs.db
 !.gitkeep
 .vscode
 yarn-error.log
+.idea

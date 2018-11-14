@@ -1,10 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
 
-import DayWeather from './DayWeather.vue'
+import Temperatures from './Temperatures.vue'
 
-describe('DayWeather', () => {
+describe('Temperatures', () => {
   it('should display formatted temperature', () => {
-    const wrapper = shallowMount(DayWeather, {
+    const wrapper = shallowMount(Temperatures, {
       propsData: {
         day: {
           date: new Date(),
@@ -14,6 +14,6 @@ describe('DayWeather', () => {
       }
     })
 
-    expect(wrapper.text()).toContain('14,5 C°')
+    expect(wrapper.text()).toContain('14,5°C 16°C')
   })
 })
